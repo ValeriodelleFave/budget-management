@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     CommonModule,
     BrowserModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
     MatButtonModule,

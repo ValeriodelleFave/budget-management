@@ -2,21 +2,20 @@
 <div class="container">
   <form [formGroup]="budgetForm">
 
-    <mat-radio-group formControlName="entrataUscita" aria-label="Select an option">
-      <mat-radio-button value="true" [checked]="true">Entrata</mat-radio-button>
-      <mat-radio-button value="false">Uscita</mat-radio-button>
+    <mat-radio-group class="field" formControlName="incomeExpense" aria-label="Select an option">
+      <mat-radio-button *ngFor="let option of radioButtonOptions" [value]="option.value" [checked]="option.isChecked">{{option.text}}</mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field>
+    <mat-form-field class="field">
       <mat-label>Cifra</mat-label>
-      <input type="number" matInput step="0.01" placeholder="0.00" formControlName="cifra">
+      <input type="number" matInput step="0.01" placeholder="0.00" formControlName="moneyNumber">
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Motivo</mat-label>
-      <textarea matInput placeholder="Motivo" formControlName="motivo"></textarea>
+    <mat-form-field class="field">
+      <mat-label>Motivazione</mat-label>
+      <textarea matInput placeholder="Motivazione" formControlName="motivation"></textarea>
     </mat-form-field>
-    <button mat-button (click)="send()">Invia</button>
+    <button mat-flat-button color="primary" (click)="send()">Invia</button>
   </form>
 
 </div>

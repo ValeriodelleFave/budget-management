@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,47 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
   public title = 'Budget management';
-  public budgetForm = new FormGroup({
-    entrataUscita: new FormControl(),
-    cifra: new FormControl(),
-    motivo: new FormControl()
-  });
+  public budgetForm = new FormGroup(
+    {
+      incomeExpense: new FormControl(true,
+        {
+          validators: Validators.required
+        }
+      ),
+      moneyNumber: new FormControl(null,
+        {
+          validators: Validators.required
+        }
+      ),
+      motivation: new FormControl(null,
+        {
+          validators: Validators.required
+        }
+      )
+    }
+  );
+  public radioButtonOptions = [
+    {
+      text: "Entrata",
+      value: true,
+      isChecked: true
+    },
+    {
+      text: "Uscita",
+      value: false,
+      isChecked: false
+    }
+  ]
 
   public send() {
     const data = this.budgetForm.value;
-    data.data =  new Date().toLocaleDateString();
-    console.log(this.budgetForm.value);
+    data.date = new Date().toLocaleDateString();
+
+    // TODO: Effettuare chiamate REST al BE
+    if (this.budgetForm.valid) {
+      console.log(data)
+    } else {
+      console.error(data)
+    }
   }
 }
