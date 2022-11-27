@@ -1,1 +1,22 @@
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<h1>{{title}}</h1>
+<div class="container">
+  <form [formGroup]="budgetForm">
+
+    <mat-radio-group formControlName="entrataUscita" aria-label="Select an option">
+      <mat-radio-button value="true" [checked]="true">Entrata</mat-radio-button>
+      <mat-radio-button value="false">Uscita</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <mat-label>Cifra</mat-label>
+      <input type="number" matInput step="0.01" placeholder="0.00" formControlName="cifra">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Motivo</mat-label>
+      <textarea matInput placeholder="Motivo" formControlName="motivo"></textarea>
+    </mat-form-field>
+    <button mat-button (click)="send()">Invia</button>
+  </form>
+
+</div>

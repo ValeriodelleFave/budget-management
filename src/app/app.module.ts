@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import { AngularMaterialModule } from 'src/angular-material.module';
 
 
 @NgModule({
@@ -11,9 +8,7 @@ import { MatSliderModule } from '@angular/material/slider';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    NoopAnimationsModule,
-    MatSliderModule
+    AngularMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
