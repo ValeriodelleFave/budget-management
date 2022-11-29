@@ -1,3 +1,4 @@
+import { NetworkManager } from './../services/network-manager.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -40,11 +41,14 @@ export class AppComponent {
     }
   ]
 
+  constructor(private networkManager: NetworkManager) { }
+
   public send() {
     const data = this.budgetForm.value;
     data.date = new Date().toLocaleDateString();
 
     // TODO: Effettuare chiamate REST al BE
+    this.networkManager.post("/", data).subscribe(res => console.log(res))
     if (this.budgetForm.valid) {
       console.log(data)
     } else {
