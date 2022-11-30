@@ -32,12 +32,12 @@ export class AppComponent {
     {
       text: "Entrata",
       value: true,
-      isChecked: true
+      isChecked: false
     },
     {
       text: "Uscita",
       value: false,
-      isChecked: false
+      isChecked: true
     }
   ]
 
