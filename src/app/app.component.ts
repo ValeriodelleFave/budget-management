@@ -1,6 +1,7 @@
 import { NetworkManager } from './../services/network-manager.service';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,17 @@ export class AppComponent {
     }
   ]
 
-  constructor(private networkManager: NetworkManager) { }
+  constructor(
+    private networkManager: NetworkManager) { }
+
+  ngOnInit() {
+    this.networkManager.post("/connect", {}).subscribe(res => console.log(res));
+  }
+
+  @HostListener('window:beforeunload')
+  async ngOnDestroy() {
+    await this.networkManager.post("/disconnect", {}).subscribe(res => console.log(res));
+  }
 
   public send() {
     const data = this.budgetForm.value;

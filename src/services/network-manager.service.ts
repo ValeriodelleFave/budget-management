@@ -22,3 +22,5 @@ export class NetworkManager {
 
 export type Url = ""
   | "/"
+  | "/connect"
+  | "/disconnect"
