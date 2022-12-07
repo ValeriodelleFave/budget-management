@@ -9,7 +9,7 @@ export class NetworkManager {
   };
 
   url = {
-    prod: "https://my-endpoints.herokuapp.com",
+    prod: "https://my-endpoints.onrender.com",
     dev: "http://localhost:3000"
   }
 
