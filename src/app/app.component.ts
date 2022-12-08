@@ -2,6 +2,7 @@ import { NetworkManager } from './../services/network-manager.service';
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +44,8 @@ export class AppComponent {
   ]
 
   constructor(
-    private networkManager: NetworkManager) { }
+    private networkManager: NetworkManager,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.networkManager.post("/connect", {}).subscribe(res => console.log(res));
@@ -59,7 +61,7 @@ export class AppComponent {
     data.date = new Date().toLocaleDateString();
 
     // TODO: Effettuare chiamate REST al BE
-    this.networkManager.post("/", data).subscribe(res => console.log(res))
+    this.networkManager.post("/", data).subscribe(res => res ? this.snackBar.open("Operazione completata") : this.snackBar.open("Operazione fallita"))
     if (this.budgetForm.valid) {
       console.log(data)
     } else {

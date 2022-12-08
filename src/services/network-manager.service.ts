@@ -16,11 +16,11 @@ export class NetworkManager {
   constructor(private http: HttpClient) { }
 
   get<T>(url: Url, options?: { [key: string]: string }) {
-    return this.http.get<T>(this.url.prod + url, { params: options });
+    return this.http.get<T>(this.url.dev + url, { params: options });
   }
 
   post(url: Url, data: Object) {
-    return this.http.post(this.url.prod + url, data);
+    return this.http.post(this.url.dev + url, data);
   }
 
 }
